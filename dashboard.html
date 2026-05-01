@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="horizalign">
+                <div style="display: flex;">
+                    <img class="imgHeader" src="images/CCALogo.png" alt="CCALogo">
+                    <img class="imgHeader" src="images/CCAText.png" alt="City College of Angeles">
+                </div>
+                <div class="imgHeader">
+                    <img id="profileicon" class="icon" src="Icons/profile.png" alt="profile" onclick="toggleProfileOverlay()">
+                    <div id="profileOverlay" class="profile-overlay">
+                        <div class="profile-overlay-content">
+                            <div class="profile-header">
+                                <h3>User Profile</h3>
+                            </div>
+                            <a href="#" class="profile-item">View Profile</a>
+                            <a href="#" class="profile-item" onclick="openSettingsModal(); return false;">Settings</a>
+                            <a href="#" class="profile-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="settingsModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-option" onclick="openPasswordModal()">
+                    <div class="settings-option-icon">🔐</div>
+                    <div class="settings-option-content">
+                        <h3>Change Password</h3>
+                        <p>Update your account password</p>
+                    </div>
+                    <div class="settings-option-arrow">›</div>
+                </div>
+                <div class="settings-option" onclick="openProfileEditModal()">
+                    <div class="settings-option-icon">👤</div>
+                    <div class="settings-option-content">
+                        <h3>Edit Profile</h3>
+                        <p>Update your personal information</p>
+                    </div>
+                    <div class="settings-option-arrow">›</div>
+                </div>
+                <div class="settings-option" onclick="openFaceRegistrationModal()">
+                    <div class="settings-option-icon">🔍</div>
+                    <div class="settings-option-content">
+                        <h3>Face Registration</h3>
+                        <p>Register or update your face data</p>
+                    </div>
+                    <div class="settings-option-arrow">›</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="passwordModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Password</h2>
+                <button class="modal-close" onclick="closePasswordModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" placeholder="Enter current password">
+                </div>
+                <div class="settings-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password">
+                </div>
+                <div class="settings-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closePasswordModal()">Cancel</button>
+                <button class="btn-save" onclick="savePassword()">Save Password</button>
+            </div>
+        </div>
+    </div>
+    <div id="profileEditModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="modal-close" onclick="closeProfileEditModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter first name">
+                </div>
+                <div class="settings-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter last name">
+                </div>
+                <div class="settings-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="Enter address">
+                </div>
+                <div class="settings-group">
+                    <label for="profilePicture">Picture</label>
+                    <input type="file" id="profilePicture" accept="image/*">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeProfileEditModal()">Cancel</button>
+                <button class="btn-save" onclick="saveProfile()">Save Profile</button>
+            </div>
+        </div>
+    </div>
+    <div id="faceRegistrationModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Face Registration</h2>
+                <button class="modal-close" onclick="closeFaceRegistrationModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Register your face for login and attendance verification.</p>
+                <div class="settings-group">
+                    <label for="faceImage">Upload Face Image</label>
+                    <input type="file" id="faceImage" accept="image/*">
+                </div>
+                <div class="settings-group">
+                    <p>Or use your camera to capture a live face image.</p>
+                    <button class="btn-save" type="button" onclick="startFaceCapture()">Open Camera</button>
+                </div>
+                <div id="cameraContainer" class="face-camera hidden">
+                    <video id="faceVideo" autoplay playsinline></video>
+                    <button class="btn-save" type="button" onclick="takeFaceSnapshot()">Capture Snapshot</button>
+                </div>
+                <div id="snapshotPreview" class="settings-group hidden">
+                    <label>Preview</label>
+                    <img id="facePreview" alt="Face preview">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeFaceRegistrationModal()">Cancel</button>
+                <button class="btn-save" onclick="saveFaceRegistration()">Register Face</button>
+            </div>
+        </div>
+    </div>
+    <div class="container main">
+        <div id="menu" class="menu" >
+            <div class="menuimg">
+                <div class="container menu-toggle" onclick="toggleMenu()" >
+                    <img id="menuicon" class="icon" src="Icons/menu.png" alt="menu">
+                    <h2>Menu</h2>
+                </div>
+                <div id="divline"></div>
+                <div class="container menu-item active" onclick="showPage('dashboard'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/dashboard.png" alt="dashboard">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('schedule'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/schedule.png" alt="schedule">
+                    <h2>Schedule</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('classes'); setActiveMenu(this)">
+                    <img src="Icons/classes.png" alt="Classes" class="icon">
+                    <h2>Classes</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('chat'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/chat.png" alt="chat">
+                    <h2>Chat</h2>
+                </div>
+            </div>
+            <script src="script.js" defer></script>
+        </div>
+        <div class="left-content">
+            <div class="content-area">
+                <div id="dashboard" class="page active">
+                    <h1>Dashboard</h1>
+                    <div class="page-row">
+                        <div class="card">
+                            <h3>Attendance Summary</h3>
+                            <p>Placeholder metrics and widgets appear here.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Latest Activity</h3>
+                            <p>Recent records and notifications will show here.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Announcements</h3>
+                        <p>This is temporary dashboard content to preview the layout.</p>
+                    </div>
+                </div>
+                <div id="schedule" class="page">
+                    <h1>Schedule</h1>
+                    <div class="card">
+                        <p>Temporary schedule view. Replace with actual timetable or calendar content.</p>
+                    </div>
+                </div>
+                <div id="classes" class="page">
+                    <h1>Classes</h1>
+                    <div class="card">
+                        <p>Temporary classes list. Replace with actual class cards and details.</p>
+                    </div>
+                </div>
+                <div id="chat" class="page">
+                    <h1>Chat</h1>
+                    <div class="card">
+                        <p>Temporary chat area. Replace with chat threads and messaging UI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

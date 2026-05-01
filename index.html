@@ -17,8 +17,35 @@
             </div>
         </div>
         <div class="right">
-            <H1>HELOOO</H1>
+            <form>
+                <div id="login" class="view page active">
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <div class="horizalign">
+
+                        <a href="#" type="button" onclick="showPage('register')">register</a>
+                        <button type="button" onclick="goToPage()">Login</button>
+                    </div>
+
+                </div>
+
+                <div id="register" class="view page">
+                    <h2>Register</h2>
+                    <input type="text" placeholder="Username">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+
+                    <div class="horizalign">
+                        <a href="#" type="button" onclick="showPage('login')">Back to Login</a>
+                        <button>Sign Up</button>
+                        
+                    </div>
+                    
+                </div>
+                <script src="script.js" defer></script>
+            </form>
         </div>
-        </div>
+    </div>
 </body>
 </html>
