@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="horizalign">
+                <div style="display: flex;">
+                    <img class="imgHeader" src="images/CCALogo.png" alt="CCALogo">
+                    <img class="imgHeader" src="images/CCAText.png" alt="City College of Angeles">
+                </div>
+                <div class="imgHeader">
+                    <img id="profileicon" class="icon" src="Icons/profile.png" alt="profile" onclick="toggleProfileOverlay()">
+                    <div id="profileOverlay" class="profile-overlay">
+                        <div class="profile-overlay-content">
+                            <div class="profile-header">
+                                <h3>Teacher Profile</h3>
+                            </div>
+                            <a href="#" class="profile-item">View Profile</a>
+                            <a href="index.html" class="profile-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main role-page">
+        <div id="menu" class="menu">
+            <div class="menuimg">
+                <div class="container menu-toggle" onclick="toggleMenu()">
+                    <img id="menuicon" class="icon" src="Icons/menu.png" alt="menu">
+                    <h2>Teacher</h2>
+                </div>
+                <div id="divline"></div>
+                <div class="container menu-item active" onclick="showPage('dashboard'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/dashboard.png" alt="dashboard">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('classes'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/classes.png" alt="classes">
+                    <h2>Classes</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('attendance'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/schedule.png" alt="attendance">
+                    <h2>Attendance</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('chat'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/chat.png" alt="chat">
+                    <h2>Chat</h2>
+                </div>
+            </div>
+            <script src="script.js" defer></script>
+        </div>
+
+        <div class="left-content">
+            <div class="content-area">
+                <div id="dashboard" class="page active">
+                    <h1>Teacher Dashboard</h1>
+                    <div class="role-stat-grid">
+                        <div class="card role-stat-card">
+                            <span>Classes Today</span>
+                            <strong>3</strong>
+                        </div>
+                        <div class="card role-stat-card">
+                            <span>Students Present</span>
+                            <strong>86</strong>
+                        </div>
+                        <div class="card role-stat-card">
+                            <span>Pending Reviews</span>
+                            <strong>5</strong>
+                        </div>
+                    </div>
+
+                    <div class="role-section-grid">
+                        <div class="card role-card">
+                            <h2>Today's Schedule</h2>
+                            <div class="role-list">
+                                <div><strong>Programming 1</strong><span>8:00 AM - 10:00 AM | Lab 1</span></div>
+                                <div><strong>Data Structures</strong><span>1:00 PM - 3:00 PM | Room 203</span></div>
+                                <div><strong>Consultation</strong><span>3:30 PM - 4:30 PM | Faculty Room</span></div>
+                            </div>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Attendance Alerts</h2>
+                            <div class="role-list">
+                                <div><strong>BSIT 1A</strong><span>3 students marked late</span></div>
+                                <div><strong>BSIT 1B</strong><span>2 students absent today</span></div>
+                                <div><strong>BSCS 1A</strong><span>Attendance verification complete</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="classes" class="page">
+                    <h1>My Classes</h1>
+                    <div class="role-section-grid">
+                        <div class="card role-card">
+                            <h2>Programming 1</h2>
+                            <p>BSIT 1A | 32 students | Lab 1</p>
+                            <button class="btn-save" type="button">View Class</button>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Data Structures</h2>
+                            <p>BSIT 1A | 29 students | Room 203</p>
+                            <button class="btn-save" type="button">View Class</button>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Database Systems</h2>
+                            <p>BSIT 1B | 31 students | Lab 3</p>
+                            <button class="btn-save" type="button">View Class</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="attendance" class="page">
+                    <h1>Attendance</h1>
+                    <div class="card role-card">
+                        <h2>Recent Attendance</h2>
+                        <table class="role-table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Subject</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juan Dela Cruz</td>
+                                    <td>Programming 1</td>
+                                    <td>8:02 AM</td>
+                                    <td><span class="role-pill present">Present</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Santos</td>
+                                    <td>Programming 1</td>
+                                    <td>8:18 AM</td>
+                                    <td><span class="role-pill late">Late</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Carlo Reyes</td>
+                                    <td>Programming 1</td>
+                                    <td>-</td>
+                                    <td><span class="role-pill absent">Absent</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="chat" class="page">
+                    <h1>Chat</h1>
+                    <div class="card role-card">
+                        <h2>Messages</h2>
+                        <div class="role-list">
+                            <div><strong>Registrar Office</strong><span>Please submit attendance corrections by 5 PM.</span></div>
+                            <div><strong>BSIT 1A Group</strong><span>Student questions about lab activity.</span></div>
+                            <div><strong>Admin</strong><span>Schedule update request approved.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

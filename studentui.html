@@ -184,35 +184,176 @@
                     <h1>Dashboard</h1>
                     <div class="page-row">
                         <div class="card">
-                            <h3>Attendance Summary</h3>
-                            <p>Placeholder metrics and widgets appear here.</p>
+                            <h2>9/10</h2>
+                            <h4>Attendance</h4>
+                            
                         </div>
                         <div class="card">
-                            <h3>Latest Activity</h3>
-                            <p>Recent records and notifications will show here.</p>
+                            <h2>1/10</h2>
+                            <h4>Absent</h4>
+                            
+                        </div>
+                        <div class="card">
+                            <h2>0/10</h2>
+                            <h4>Late</h4>
+                            
                         </div>
                     </div>
-                    <div class="card">
-                        <h3>Announcements</h3>
-                        <p>This is temporary dashboard content to preview the layout.</p>
+                    <div class="horizalign classes">
+                        <div class="subject card">
+                            <div class="subject-card-header">
+                                <h3>Subjects</h3>
+                                <p>Attendance summary by class</p>
+                            </div>
+
+                            <div class="subject-summary-card">
+                                <div>
+                                    <h3>Programming 1</h3>
+                                    <p>Prof. Santos</p>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Attendance</span>
+                                    <strong>8/10</strong>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Overall</span>
+                                    <strong>80%</strong>
+                                </div>
+                                <div class="subject-progress">
+                                    <div style="width: 80%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="subject-summary-card">
+                                <div>
+                                    <h3>Data Structures</h3>
+                                    <p>Prof. Reyes</p>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Attendance</span>
+                                    <strong>7/10</strong>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Overall</span>
+                                    <strong>70%</strong>
+                                </div>
+                                <div class="subject-progress">
+                                    <div style="width: 70%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="subject-summary-card">
+                                <div>
+                                    <h3>Physical Education</h3>
+                                    <p>Coach Dela Cruz</p>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Attendance</span>
+                                    <strong>9/10</strong>
+                                </div>
+                                <div class="subject-attendance-row">
+                                    <span>Overall</span>
+                                    <strong>90%</strong>
+                                </div>
+                                <div class="subject-progress">
+                                    <div style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ongoing">
+                            <div class="card ongoing-card">
+                                <div class="ongoing-header">
+                                    <div>
+                                        <h3>Ongoing Class</h3>
+                                        <p id="ongoingScheduleTime">Loading schedule</p>
+                                    </div>
+                                    <span id="ongoingStatus" class="ongoing-status present">Present</span>
+                                </div>
+                                <h2 id="ongoingClassName">Programming 1</h2>
+                                <div class="ongoing-progress-info">
+                                    <span>Class Progress</span>
+                                    <strong id="ongoingProgressText">0%</strong>
+                                </div>
+                                <div class="ongoing-progress">
+                                    <div id="ongoingProgressBar"></div>
+                                </div>
+                            </div>
+                            <div class="tclasses card">
+                                <div class="tclasses-header">
+                                    <h3>Today's Classes</h3>
+                                    <p id="todayClassesDate">Scheduled subjects for today</p>
+                                </div>
+                                <div id="todayClassesList" class="today-classes-list"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="schedule" class="page">
                     <h1>Schedule</h1>
-                    <div class="card">
-                        <p>Temporary schedule view. Replace with actual timetable or calendar content.</p>
+                    <div class="schedule-layout">
+                        <div class="card week-schedule-card">
+                            <div class="week-schedule-header">
+                                <div>
+                                    <h2>Weekly Timeline</h2>
+                                    <p id="scheduleAccountLabel">Showing admin-assigned schedule</p>
+                                </div>
+                            </div>
+                            <div class="week-timeline" id="weekTimeline"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="classes" class="page">
                     <h1>Classes</h1>
-                    <div class="card">
-                        <p>Temporary classes list. Replace with actual class cards and details.</p>
+                    <div class="classes-layout">
+                        <div class="card subject-list-card">
+                            <div class="classes-section-header">
+                                <h2>Subjects</h2>
+                                <p>Select a subject to view your attendance calendar.</p>
+                            </div>
+                            <div id="subjectList" class="subject-list"></div>
+                        </div>
+
+                        <div class="card attendance-calendar-card">
+                            <div class="classes-section-header attendance-calendar-header">
+                                <div>
+                                    <h2 id="attendanceSubjectTitle">Attendance Calendar</h2>
+                                    <p id="attendanceSubjectSchedule">Select a subject</p>
+                                </div>
+                                <div class="attendance-legend">
+                                    <span><i class="status-dot present"></i>Present</span>
+                                    <span><i class="status-dot late"></i>Late</span>
+                                    <span><i class="status-dot absent"></i>Absent</span>
+                                </div>
+                            </div>
+                            <div class="calendar-month-title" id="calendarMonthTitle"></div>
+                            <div class="attendance-calendar" id="attendanceCalendar"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="chat" class="page">
                     <h1>Chat</h1>
-                    <div class="card">
-                        <p>Temporary chat area. Replace with chat threads and messaging UI.</p>
+                    <div class="chat-layout">
+                        <div class="card chat-list-card">
+                            <div class="chat-section-header">
+                                <h2>Messages</h2>
+                                <p>Class and admin conversations</p>
+                            </div>
+                            <div id="chatThreadList" class="chat-thread-list"></div>
+                        </div>
+
+                        <div class="card chat-window-card">
+                            <div class="chat-window-header">
+                                <div>
+                                    <h2 id="chatThreadTitle">Select a conversation</h2>
+                                    <p id="chatThreadSubtitle">No conversation selected</p>
+                                </div>
+                            </div>
+                            <div id="chatMessages" class="chat-messages"></div>
+                            <div class="chat-compose">
+                                <input type="text" id="chatMessageInput" placeholder="Type a message">
+                                <button class="btn-save" type="button" onclick="sendChatMessage()">Send</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

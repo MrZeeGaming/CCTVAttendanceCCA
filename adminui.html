@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="horizalign">
+                <div style="display: flex;">
+                    <img class="imgHeader" src="images/CCALogo.png" alt="CCALogo">
+                    <img class="imgHeader" src="images/CCAText.png" alt="City College of Angeles">
+                </div>
+                <div class="imgHeader">
+                    <img id="profileicon" class="icon" src="Icons/profile.png" alt="profile" onclick="toggleProfileOverlay()">
+                    <div id="profileOverlay" class="profile-overlay">
+                        <div class="profile-overlay-content">
+                            <div class="profile-header">
+                                <h3>Admin Profile</h3>
+                            </div>
+                            <a href="#" class="profile-item">View Profile</a>
+                            <a href="index.html" class="profile-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main role-page admin-page">
+        <div id="menu" class="menu">
+            <div class="menuimg">
+                <div class="container menu-toggle" onclick="toggleMenu()">
+                    <img id="menuicon" class="icon" src="Icons/menu.png" alt="menu">
+                    <h2>Admin</h2>
+                </div>
+                <div id="divline"></div>
+                <div class="container menu-item active" onclick="showPage('dashboard'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/dashboard.png" alt="dashboard">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('users'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/profile.png" alt="users">
+                    <h2>Users</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('schedules'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/schedule.png" alt="schedules">
+                    <h2>Schedules</h2>
+                </div>
+                <div class="container menu-item" onclick="showPage('reports'); setActiveMenu(this)">
+                    <img class="icon" src="Icons/classes.png" alt="reports">
+                    <h2>Reports</h2>
+                </div>
+            </div>
+            <script src="script.js" defer></script>
+        </div>
+
+        <div class="left-content">
+            <div class="content-area">
+                <div id="dashboard" class="page active">
+                    <h1>Admin Dashboard</h1>
+                    <div class="role-stat-grid">
+                        <div class="card role-stat-card">
+                            <span>Students</span>
+                            <strong>1,248</strong>
+                        </div>
+                        <div class="card role-stat-card">
+                            <span>Teachers</span>
+                            <strong>64</strong>
+                        </div>
+                        <div class="card role-stat-card">
+                            <span>Active Classes</span>
+                            <strong>118</strong>
+                        </div>
+                        <div class="card role-stat-card">
+                            <span>Attendance Today</span>
+                            <strong>91%</strong>
+                        </div>
+                    </div>
+
+                    <div class="role-section-grid">
+                        <div class="card role-card">
+                            <h2>System Activity</h2>
+                            <div class="role-list">
+                                <div><strong>Face verification</strong><span>342 successful scans today</span></div>
+                                <div><strong>Schedule updates</strong><span>8 class schedules modified</span></div>
+                                <div><strong>Pending accounts</strong><span>12 student registrations need review</span></div>
+                            </div>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Quick Actions</h2>
+                            <div class="role-actions">
+                                <button class="btn-save" type="button">Add User</button>
+                                <button class="btn-save" type="button">Create Schedule</button>
+                                <button class="btn-save" type="button">Export Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="users" class="page">
+                    <h1>User Management</h1>
+                    <div class="card role-card">
+                        <div class="role-toolbar">
+                            <h2>Accounts</h2>
+                            <button class="btn-save" type="button">Add Account</button>
+                        </div>
+                        <table class="role-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Section</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juan Dela Cruz</td>
+                                    <td>Student</td>
+                                    <td>BSIT 1A</td>
+                                    <td><span class="role-pill present">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Prof. Santos</td>
+                                    <td>Teacher</td>
+                                    <td>IT Department</td>
+                                    <td><span class="role-pill present">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>New Applicant</td>
+                                    <td>Student</td>
+                                    <td>Pending</td>
+                                    <td><span class="role-pill late">Review</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="schedules" class="page">
+                    <h1>Schedule Management</h1>
+                    <div class="role-section-grid">
+                        <div class="card role-card">
+                            <h2>Create Schedule</h2>
+                            <div class="role-form-grid">
+                                <input type="text" placeholder="Subject">
+                                <input type="text" placeholder="Teacher">
+                                <input type="text" placeholder="Section">
+                                <input type="text" placeholder="Room">
+                                <input type="time">
+                                <input type="time">
+                                <button class="btn-save" type="button">Save Schedule</button>
+                            </div>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Recent Schedules</h2>
+                            <div class="role-list">
+                                <div><strong>Programming 1</strong><span>BSIT 1A | Monday | Lab 1</span></div>
+                                <div><strong>Data Structures</strong><span>BSIT 1A | Wednesday | Room 203</span></div>
+                                <div><strong>Database Systems</strong><span>BSIT 1B | Tuesday | Lab 3</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reports" class="page">
+                    <h1>Reports</h1>
+                    <div class="role-section-grid">
+                        <div class="card role-card">
+                            <h2>Attendance Summary</h2>
+                            <div class="role-list">
+                                <div><strong>Present</strong><span>1,094 students</span></div>
+                                <div><strong>Late</strong><span>87 students</span></div>
+                                <div><strong>Absent</strong><span>67 students</span></div>
+                            </div>
+                        </div>
+                        <div class="card role-card">
+                            <h2>Exports</h2>
+                            <div class="role-actions">
+                                <button class="btn-save" type="button">Daily Report</button>
+                                <button class="btn-save" type="button">Class Report</button>
+                                <button class="btn-save" type="button">Student Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
